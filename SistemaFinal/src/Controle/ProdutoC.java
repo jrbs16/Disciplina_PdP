@@ -60,9 +60,35 @@ public class ProdutoC {
         }catch(Exception erro){
             erro.printStackTrace();
         }
-        return dadosConsulta;
-        
+        return dadosConsulta;    
         
     }
+    //Delete
+    public void DeletaProduto(String produto){
+        try{
+            dao.conexao();
+            String SQL="delete from produto where nomeProduto='"+produto+"'";
+            dao.getStatement().execute(SQL);
+            System.out.println("Produto removido");
+            dao.desconecta();
+        }catch(Exception erro){
+            erro.printStackTrace();
+        }
+    }
+    //Update
+    public void AtualizaProduto(String produto,Float valorUnitario){
+        try{
+            dao.conexao();
+            String SQL="update login set valorUnitario='"+valorUnitario+"',produto='"+produto+"'"
+                    + "where usuario='"+produto+"'";
+            dao.getStatement().execute(SQL);
+            System.out.println("Atualizou");
+            dao.desconecta();
+            
+        }catch(Exception erro){
+            erro.printStackTrace();
+        }
+    }
+    
     
 }
